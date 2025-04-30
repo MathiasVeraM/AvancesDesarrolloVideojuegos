@@ -9,7 +9,7 @@ public class PlayerController : MonoBehaviour
     private float moveInputX;
     private float moveInputY;
 
-    public float jumpForce = 7f;
+    public float jumpForce = 4f;
     private bool isAttacking = false;
     private bool isJumping = false;
 
