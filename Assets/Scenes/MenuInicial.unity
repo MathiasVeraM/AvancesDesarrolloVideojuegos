@@ -645,7 +645,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Espectre Quest
+  m_text: Spectre Quest
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 90a7821ec4497294d90c6db139d32c79, type: 2}
   m_sharedMaterial: {fileID: -2179736677374742979, guid: 90a7821ec4497294d90c6db139d32c79, type: 2}
