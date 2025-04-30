@@ -1,11 +1,15 @@
+using System;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class PlayerController : MonoBehaviour
 {
     private Animator animator;
     private Rigidbody2D rb;
+    public Transform spawnPoint;
 
     public float moveSpeed = 5f;
+    public float fallThreshold = -10f;
     private float moveInputX;
     private float moveInputY;
 
@@ -69,6 +73,18 @@ public class PlayerController : MonoBehaviour
         {
             rb.linearVelocity += Vector2.up * Physics2D.gravity.y * (lowJumpMultiplier - 1) * Time.deltaTime;
         }
+
+        if (transform.position.y < fallThreshold)
+        {
+            Die();
+        }
+    }
+
+    private void Die()
+    {
+        // Reinicia la posición al punto de aparición, para checkpoints
+        // transform.position = spawnPoint.position;
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
 
     void MoveCharacter()
