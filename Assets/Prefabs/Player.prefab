@@ -203,8 +203,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   moveSpeed: 10
   jumpForce: 7
-  fallMultiplier: 2.5
-  lowJumpMultiplier: 2
+  fallMultiplier: 3
+  lowJumpMultiplier: 2.5
   groundCheck: {fileID: 347760739852509661}
   groundCheckRadius: 0.1
   whatIsGround:
