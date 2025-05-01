@@ -7,6 +7,8 @@ public class PlayerController : MonoBehaviour
     private Animator animator;
     private Rigidbody2D rb;
     public Transform spawnPoint;
+    public int PlayerLife = 100;
+
 
     public float moveSpeed = 5f;
     public float fallThreshold = -10f;
@@ -78,13 +80,25 @@ public class PlayerController : MonoBehaviour
         {
             Die();
         }
+
+        // Verificar que la vida del personaje baja a 0
+        CheckLife();
     }
 
     private void Die()
     {
         // Reinicia la posición al punto de aparición, para checkpoints
-        // transform.position = spawnPoint.position;
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+        transform.position = spawnPoint.position;
+
+        // SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+    }
+
+    public void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.gameObject.name == "HitEnemy(Clone)")
+        {
+            PlayerLife -= 20;
+        }
     }
 
     void MoveCharacter()
@@ -126,6 +140,13 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-
+    public void CheckLife()
+    {
+        if (PlayerLife <= 0)
+        {
+            animator.SetBool("isDeath", true);
+            Die();
+        }
+    }
 
 }

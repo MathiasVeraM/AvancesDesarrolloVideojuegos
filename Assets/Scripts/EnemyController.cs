@@ -4,12 +4,18 @@ public class EnemyController : MonoBehaviour
 {
     public float Speed = 2f;
     public int EnemyLife = 100;
-    public float MinDistance = 1.5f;
+    public float MinDistance = 0.5f;
+    public float detectionRadius = 3.5f;
     public Transform player;
 
     private Animator animator;
     private bool isFacingRight = true;
     private bool isAttacking = false;
+
+    // Hitbox
+    public GameObject HitBox;
+    public GameObject Hit;
+
 
     void Start()
     {
@@ -20,24 +26,35 @@ public class EnemyController : MonoBehaviour
     {
         float distanceToPlayer = Vector2.Distance(transform.position, player.position);
 
-        if (distanceToPlayer > MinDistance)
+        if (distanceToPlayer < detectionRadius)
         {
-            // Moverse hacia el jugador
-            animator.SetBool("isRunning", true);
-            animator.SetBool("isAttacking", false);
-            isAttacking = false;
-
             transform.position = Vector2.MoveTowards(transform.position, player.position, Speed * Time.deltaTime);
+
+            if (distanceToPlayer > MinDistance)
+            {
+                // Moverse hacia el jugador
+                animator.SetBool("isRunning", true);
+                animator.SetBool("isAttacking", false);
+                isAttacking = false;
+
+                // Vector2 direction = (player.position - transform.position).normalized;
+                // movement = new Vector2(direction.x, 0);
+            }
+            else
+            {
+                // Atacar si está cerca
+                animator.SetBool("isRunning", false);
+                GenerateHitBox();
+                if (!isAttacking)
+                {
+                    StartCoroutine(Attack());
+                }
+            }
         }
         else
         {
-            // Atacar si está cerca
             animator.SetBool("isRunning", false);
-
-            if (!isAttacking)
-            {
-                StartCoroutine(Attack());
-            }
+            transform.position = transform.position;
         }
 
         Flip(player.position.x > transform.position.x);
@@ -50,7 +67,7 @@ public class EnemyController : MonoBehaviour
         animator.SetBool("isAttacking", true);
 
         // Espera el tiempo de ataque (ajústalo según tu animación)
-        yield return new WaitForSeconds(0.7f);
+        yield return new WaitForSeconds(0.5f);
 
         animator.SetBool("isAttacking", false);
         isAttacking = false;
@@ -79,7 +96,31 @@ public class EnemyController : MonoBehaviour
     {
         if (EnemyLife <= 0)
         {
-            Destroy(gameObject, 0.4f);
+            Speed = 0;
+            transform.position = transform.position;
+            animator.SetBool("isDeath", true);
+            Destroy(gameObject, 1f);
+        }
+    }
+
+    private void OnDrawGizmosSelected()
+    {
+        Gizmos.color = Color.red;
+        Gizmos.DrawWireSphere(transform.position, detectionRadius);
+
+    }
+
+    public void GenerateHitBox()
+    {
+        if (GameObject.Find("HitEnemy(Clone)"))
+        {
+            return;
+        }
+        else
+        {
+            Vector3 PossitionHit = new Vector3(HitBox.transform.position.x, HitBox.transform.position.y, 0);
+            GameObject tempHit = Instantiate(Hit, PossitionHit, Quaternion.identity);
+            Destroy(tempHit, 0.4f);
         }
     }
 }
