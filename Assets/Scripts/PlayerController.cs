@@ -7,6 +7,7 @@ public class PlayerController : MonoBehaviour
     private Animator animator;
     private Rigidbody2D rb;
     public Transform spawnPoint;
+    public int PlayerMaxLife = 100;
     public int PlayerLife = 100;
 
 
@@ -147,6 +148,11 @@ public class PlayerController : MonoBehaviour
             animator.SetBool("isDeath", true);
             Die();
         }
+    }
+
+    public void Heal(int cantidad)
+    {
+        PlayerLife = Mathf.Min(PlayerLife + cantidad, PlayerMaxLife);
     }
 
 }

@@ -2241,12 +2241,20 @@ PrefabInstance:
       value: 1.5
       objectReference: {fileID: 0}
     - target: {fileID: 8201404476664923745, guid: e85929d895ae83d4a856e9b1bc99074b, type: 3}
+      propertyPath: comidaPrefab
+      value: 
+      objectReference: {fileID: 2791992723410098558, guid: cd422dcf199699a439f0c2f0def8a63a, type: 3}
+    - target: {fileID: 8201404476664923745, guid: e85929d895ae83d4a856e9b1bc99074b, type: 3}
       propertyPath: isFacingRight
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8201404476664923745, guid: e85929d895ae83d4a856e9b1bc99074b, type: 3}
       propertyPath: detectionRadius
       value: 2.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 8201404476664923745, guid: e85929d895ae83d4a856e9b1bc99074b, type: 3}
+      propertyPath: probabilidadDeDrop
+      value: 0.3
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -10205,6 +10213,10 @@ PrefabInstance:
       value: 1.5
       objectReference: {fileID: 0}
     - target: {fileID: 8201404476664923745, guid: e85929d895ae83d4a856e9b1bc99074b, type: 3}
+      propertyPath: comidaPrefab
+      value: 
+      objectReference: {fileID: 2791992723410098558, guid: cd422dcf199699a439f0c2f0def8a63a, type: 3}
+    - target: {fileID: 8201404476664923745, guid: e85929d895ae83d4a856e9b1bc99074b, type: 3}
       propertyPath: isFacingRight
       value: 1
       objectReference: {fileID: 0}
@@ -10509,6 +10521,10 @@ PrefabInstance:
       propertyPath: MinDistance
       value: 1.5
       objectReference: {fileID: 0}
+    - target: {fileID: 8201404476664923745, guid: e85929d895ae83d4a856e9b1bc99074b, type: 3}
+      propertyPath: comidaPrefab
+      value: 
+      objectReference: {fileID: 2791992723410098558, guid: cd422dcf199699a439f0c2f0def8a63a, type: 3}
     - target: {fileID: 8201404476664923745, guid: e85929d895ae83d4a856e9b1bc99074b, type: 3}
       propertyPath: isFacingRight
       value: 1

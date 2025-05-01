@@ -12,10 +12,15 @@ public class EnemyController : MonoBehaviour
     private Animator animator;
     private bool isFacingRight = true;
     private bool isAttacking = false;
+    private bool isDead = false;
 
     // Hitbox
     public GameObject HitBox;
     public GameObject Hit;
+
+    // Recompensas de enemigos
+    public GameObject comidaPrefab; // Asigna el prefab desde el inspector
+    [Range(0f, 1f)] public float probabilidadDeDrop = 0.3f;
 
 
     void Start()
@@ -95,13 +100,19 @@ public class EnemyController : MonoBehaviour
 
     void CheckLife()
     {
-        if (EnemyLife <= 0)
+        if (EnemyLife <= 0 && !isDead)
         {
+            isDead = true;
+
+            if (Random.value < probabilidadDeDrop)
+            {
+                GameObject comidaInstanciada = Instantiate(comidaPrefab, transform.position, Quaternion.identity);
+                Destroy(comidaInstanciada, 5f);
+            }
+
             Speed = 0;
-            transform.position = transform.position;
             animator.SetBool("isDeath", true);
             Destroy(gameObject, 1f);
-
         }
     }
 
