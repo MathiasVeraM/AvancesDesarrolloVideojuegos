@@ -88,16 +88,16 @@ public class PlayerController : MonoBehaviour
     private void Die()
     {
         // Reinicia la posición al punto de aparición, para checkpoints
-        transform.position = spawnPoint.position;
+        // transform.position = spawnPoint.position;
 
-        // SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
 
     public void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.gameObject.name == "HitEnemy(Clone)")
         {
-            PlayerLife -= 20;
+            PlayerLife -= 5;
         }
     }
 
