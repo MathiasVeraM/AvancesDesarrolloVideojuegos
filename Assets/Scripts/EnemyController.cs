@@ -7,6 +7,7 @@ public class EnemyController : MonoBehaviour
     public float MinDistance = 0.5f;
     public float detectionRadius = 3.5f;
     public Transform player;
+    public GameObject Recompensa;
 
     private Animator animator;
     private bool isFacingRight = true;
@@ -100,6 +101,7 @@ public class EnemyController : MonoBehaviour
             transform.position = transform.position;
             animator.SetBool("isDeath", true);
             Destroy(gameObject, 1f);
+
         }
     }
 
@@ -120,7 +122,7 @@ public class EnemyController : MonoBehaviour
         {
             Vector3 PossitionHit = new Vector3(HitBox.transform.position.x, HitBox.transform.position.y, 0);
             GameObject tempHit = Instantiate(Hit, PossitionHit, Quaternion.identity);
-            Destroy(tempHit, 0.4f);
+            Destroy(tempHit, 0.3f);
         }
     }
 }
