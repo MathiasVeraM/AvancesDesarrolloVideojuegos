@@ -182,8 +182,12 @@ MonoBehaviour:
   MinDistance: 1
   detectionRadius: 3
   player: {fileID: 3678922109629549307, guid: 743eaa62074ffc649b72c0d4db2a3a2b, type: 3}
+  Recompensa: {fileID: 0}
+  destructionEffect: {fileID: 5642766282230003982, guid: b5c8ca7ed10b61e499cce8ec3b6e2e4c, type: 3}
   HitBox: {fileID: 6982503485226074331}
   Hit: {fileID: 659963619275978218, guid: 636911d8f3fc4404f8f240cab3f0cd69, type: 3}
+  comidaPrefab: {fileID: 0}
+  probabilidadDeDrop: 0.3
 --- !u!95 &5569511704464860965
 Animator:
   serializedVersion: 7

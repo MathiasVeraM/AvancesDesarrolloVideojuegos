@@ -8,6 +8,7 @@ public class EnemyController : MonoBehaviour
     public float detectionRadius = 3.5f;
     public Transform player;
     public GameObject Recompensa;
+    public GameObject destructionEffect;
 
     private Animator animator;
     private bool isFacingRight = true;
@@ -108,6 +109,11 @@ public class EnemyController : MonoBehaviour
             {
                 GameObject comidaInstanciada = Instantiate(comidaPrefab, transform.position, Quaternion.identity);
                 Destroy(comidaInstanciada, 5f);
+            }
+
+            if (destructionEffect != null)
+            {
+                Instantiate(destructionEffect, transform.position, Quaternion.identity);
             }
 
             Speed = 0;
