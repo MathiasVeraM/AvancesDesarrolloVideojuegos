@@ -3,7 +3,8 @@ using UnityEngine.SceneManagement;
 
 public class AttackDetection : MonoBehaviour
 {
-    public float delay = 1f; // puedes hacer 0 si quieres que sea inmediato
+    public GameObject destructionEffect;
+    public float delay = 3f; // puedes hacer 0 si quieres que sea inmediato
     public bool triggerOnce = true;
     private bool triggered = false;
 
@@ -13,6 +14,10 @@ public class AttackDetection : MonoBehaviour
 
         if (collision.gameObject.name.Contains("Hit")) // detecta Hit(Clone)
         {
+            if (destructionEffect != null)
+            {
+                Instantiate(destructionEffect, transform.position, Quaternion.identity);
+            }
             triggered = true;
             Debug.Log("Recibió el Hit. Cargando siguiente escena...");
             StartCoroutine(LoadNextScene());
