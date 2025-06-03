@@ -1198,7 +1198,7 @@ PrefabInstance:
     - target: {fileID: 8201404476664923745, guid: e85929d895ae83d4a856e9b1bc99074b, type: 3}
       propertyPath: Recompensa
       value: 
-      objectReference: {fileID: 2791992723410098558, guid: cd422dcf199699a439f0c2f0def8a63a, type: 3}
+      objectReference: {fileID: 0}
     - target: {fileID: 8201404476664923745, guid: e85929d895ae83d4a856e9b1bc99074b, type: 3}
       propertyPath: comidaPrefab
       value: 
