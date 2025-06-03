@@ -2,17 +2,32 @@ using UnityEngine;
 
 public class GameManagerScript : MonoBehaviour
 {
-    public int PuntosTotales { get { return puntosTotales; } }
-    private int puntosTotales;
-    // Reiniciar puntos totales
-    public void Start()
+    public static GameManagerScript Instance { get; private set; }
+
+    public int PuntosTotales { get; private set; }
+
+    private void Awake()
     {
-        puntosTotales = 0;
+        Debug.Log("GameManager creado y marcado como persistente.");
+        if (Instance != null && Instance != this)
+        {
+            Debug.Log("GameManager duplicado, se destruye.");
+            Destroy(gameObject);
+            return;
+        }
+
+        Instance = this;
+        DontDestroyOnLoad(gameObject);
+        Debug.Log("GameManager creado.");
     }
 
-    // Funcion donde se suman los puntos obtenidos
     public void SumarPuntos(int puntosASumar)
     {
-        puntosTotales += puntosASumar;
+        PuntosTotales += puntosASumar;
+    }
+
+    public void ReiniciarPuntos()
+    {
+        PuntosTotales = 0;
     }
 }
