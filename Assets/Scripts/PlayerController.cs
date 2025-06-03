@@ -12,7 +12,7 @@ public class PlayerController : MonoBehaviour
 
 
     public float moveSpeed = 5f;
-    public float fallThreshold = -10f;
+    public float fallThreshold = -20f;
     private float moveInputX;
     private float moveInputY;
 
