@@ -10,13 +10,10 @@ public class PantallaFinal : MonoBehaviour
 
     void Start()
     {
-        Debug.Log("¿GameManager está vivo?: " + (GameManagerScript.Instance != null));
-        Debug.Log("Total de monedas: " + gameManager.PuntosTotales);
         // Usa singleton si lo tienes
         if (GameManagerScript.Instance != null)
         {
             textoMonedas.text = "Monedas recogidas: " + gameManager.PuntosTotales.ToString();
-
         }
         else
         {
@@ -26,6 +23,7 @@ public class PantallaFinal : MonoBehaviour
 
     public void VolverAlMenu()
     {
+        gameManager.ReiniciarPuntos();
         SceneManager.LoadScene(0); // Cambia el nombre si tu escena de menú tiene otro nombre
     }
 }

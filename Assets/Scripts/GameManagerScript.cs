@@ -8,17 +8,14 @@ public class GameManagerScript : MonoBehaviour
 
     private void Awake()
     {
-        Debug.Log("GameManager creado y marcado como persistente.");
         if (Instance != null && Instance != this)
         {
-            Debug.Log("GameManager duplicado, se destruye.");
             Destroy(gameObject);
             return;
         }
 
         Instance = this;
         DontDestroyOnLoad(gameObject);
-        Debug.Log("GameManager creado.");
     }
 
     public void SumarPuntos(int puntosASumar)
